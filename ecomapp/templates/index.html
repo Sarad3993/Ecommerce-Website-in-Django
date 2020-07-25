@@ -376,19 +376,20 @@
 							</div>
 							<div class="item-info-product ">
 								<h4>
+									<!-- Mathi chi hamile quick view bhanne option ma click garera view gareu but If we want ki item ko name ma click garera ni quick view garna paiyos then we can also call function inside this link  -->
 									<a href="{{item.get_item_url}}">{{item.title}}</a> 
 								</h4>
 
 								
-								<!-- > 0 means discount dya xa so in such case yo code run gara ; if dno discount then talako else condition run gara  -->
+								<!-- discounted_price > 0 means discount dya xa so in such case yo code run gara ; if dno discount then talako else condition run gara  -->
 								
 								{% if item.discounted_price > 0 %}
 								<div class="info-product-price">
-									<span class="item_price"> Rs. {{item.discounted_price}}</span>
+									<span class="item_price"> Rs.{{item.discounted_price}}</span>
 
 									<!-- yo talako chi actual price ho  -->
 									<!-- del tag le price delete garxa  -->
-									<del> Rs. {{item.price}}</del>
+									<del> Rs.{{item.price}}</del>
 								</div>
 
 								{% else %}
