@@ -13,4 +13,6 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('product/<slug>', ItemView.as_view(),name='product'),
     path('category/<slug>', CategoryView.as_view(),name='category'),
+    path('subcategory/<slug>', SubcategoryView.as_view(),name='subcategory'),
+
 ]

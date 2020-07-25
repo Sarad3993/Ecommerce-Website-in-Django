@@ -126,3 +126,12 @@ class CategoryView(BaseView):
 
 # Aba tei bhara hamile mathi bhanna paro k; la hai tapai le click garne bela ta yo ecomapp_category ma bhako slug janxa ; ani tespaxi yo slug bhako category ko id kun chi ho bhanne kura tya patta launa paro ...jastai electronics bhanne slug ko id 1 raixa re...bhanesi aba yedi yesko id 1 ho bhane yo sanga related item haru kun kun ho ta bhanne kura tya items ma gayera tha hunxa cuz tya category id anusar item milera baseka hunxan ; thus aba hamile template ma certain Category ma click gareu bhane tyo item ma bhako sabai product visible nabhai ecomapp_category bhanne table bata aako id = ecomapp_item bhanne table ma bhako category_id match hune product haru display garna sakinxa...tesaiko lagi mathi hamle query haru banako.....Aba mathi product ko case ma chi euta ma click garda tesko bare ma dekhinthyo jaslai one to one relationship bhaninxa bhane yaa ta euta category ma click garda tyo related many products dekhine bho which signifies one to many relationship(euta Category ko dherai item) or many to one relationship(Dherai item ko euta category)...THIS IS THE MAIN LOGIC BEHIND IT (VVI) 
 
+
+# # Class based view for Subcategory:
+class SubcategoryView(BaseView):
+    def get(self,request,slug):
+
+        subcategory_id = Subcategory.objects.get(slug=slug).id
+        self.template_views['subcategory_items'] = Item.objects.filter(subcategory_id=subcategory_id)
+        return render(request,'subcategory.html',self.template_views)
+# Same concept for subcategory 

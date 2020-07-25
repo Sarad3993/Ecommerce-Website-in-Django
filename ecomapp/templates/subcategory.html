@@ -273,34 +273,35 @@
 				<!-- first section -->
 
 				<div class="product-sec1">
-					{% for cat_item in category_items %}
+					{% for subcat_item in subcategory_items %}
 					<div class="col-xs-4 product-men">
 						<div class="men-pro-item simpleCart_shelfItem">
 							<div class="men-thumb-item">
-								<img src="{{cat_item.image}}" height='200' width='200' alt="Error loading image">
+								<img src="{{subcat_item.image}}" height='200' width='200' alt="Error loading image">
 								<div class="men-cart-pro">
 									<div class="inner-men-cart-pro">
 										<!-- Aba yaa tyo get_item_url() bhanne function jun Item bhanen models ma banako theu tyo rakhna paayo cuz hamile view garne ta item lai ho ni  -->
-										<a href="{{cat_item.get_item_url}}" class="link-product-add-cart">Quick View</a>
+										<a href="{{subcat_item.get_item_url}}" class="link-product-add-cart">Quick
+											View</a>
 									</div>
 								</div>
 								<!-- Display garako ta certain category ko items lai nai ho ni so Item model class ma jj field banao theu sab rakhdai jane  -->
 
-								<span class="product-new-top">{{ cat_item.labels }}</span>
+								<span class="product-new-top">{{ subcat_item.labels }}</span>
 							</div>
 							<div class="item-info-product ">
 								<h4>
 									<!-- Aba yaa pani mathi ko function halna sakinxa if we want ki quick view option ma matra nabhai product ko name mai click gare ni detail page ma jaoos -->
-									<a href="{{cat_item.get_item_url}}"> {{ cat_item.title }} </a>
+									<a href="{{subcat_item.get_item_url}}"> {{ subcat_item.title }} </a>
 								</h4>
-								{% if cat_item.discounted_price > 0 %}
+								{% if subcat_item.discounted_price > 0 %}
 								<div class="info-product-price">
-									<span class="item_price">Rs.{{ cat_item.discounted_price }}</span>
-									<del>Rs.{{cat_item.price}}</del>
+									<span class="item_price">Rs.{{ subcat_item.discounted_price }}</span>
+									<del>Rs.{{ subcat_item.price }}</del>
 								</div>
 								{% else %}
 								<div class="info-product-price">
-									<span class="item_price">Rs.{{ cat_item.price }}
+									<span class="item_price">Rs.{{ subcat_item.price }}
 
 									</span>
 								</div>

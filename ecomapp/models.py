@@ -1,7 +1,8 @@
 from django.db import models
-# Note: Database ma kei kura change garesi (i.e database ko structure chnage hune bittikai) jaile ni migrations chi compulsory garna parxa
+# Note: Database ma kei kura change garesi (i.e database ko structure chnage hune bittikai) jaile ni migrations chi compulsory garna parxa)
 
 from django.urls import reverse
+
 
 # Variables :
 # for active or default(inactive)
@@ -29,12 +30,13 @@ Labels = (('Hot', 'Hot'), ('Sale', 'Sale'), ('New', 'New'))
 # site ekdam attractive ra dynamic banauna paro bhane ta sakesamma maximum models banaunai parxa
 
 
+
 # For Categories in an ecommerce site:
 # kunai pani ecommerce ma suru mai maile sidai items / products halna midlaina ; first ma ta tyo item ko category or subcategory huna parxa
 # ani balla matra hamile tesma item add garna milxa
 # so let's create a model for Categories
 
-class Category(models.Model):  # inheriting models.Model inside Item class
+class Category(models.Model):  #inheriting models.Model inside Item class
     title = models.CharField(max_length=200)  # for title
     slug = models.CharField(unique=True, max_length=100)
     # Aba ta sochlas harek category ko ta afnai id hunxa ni tei pani hamile slug kina use garyeu ta ???
@@ -52,7 +54,7 @@ class Category(models.Model):  # inheriting models.Model inside Item class
         return reverse("ecomapp:category", kwargs={'slug': self.slug})
 
 
-# For Sub Categories inside categories:
+# For Sub Categories: 
 class Subcategory(models.Model):
     title = models.CharField(max_length=200)
     slug = models.CharField(unique=True, max_length=100)
@@ -65,8 +67,13 @@ class Subcategory(models.Model):
     def __str__(self):
         return self.title
 
+    # Subcategory ko basis ma item display garauna ko lagi yesari mathi jastai euta function() banaune 
+    def get_subcategory_url(self):
+        return reverse("ecomapp:subcategory", kwargs={'slug': self.slug})
 
-# For products and items:
+
+
+# Models For products and items:
 class Item(models.Model):
     title = models.CharField(max_length=300)  # product ko name
     price = models.IntegerField()  # FloatField rakhe pani hunxa
@@ -159,7 +166,7 @@ class Item(models.Model):
         return reverse("ecomapp:product", kwargs={'slug': self.slug})
 # aba lets make a function ; jastai kunai pani item ma click garesi tesko url dine function banam...
 # aba yaa return chi ali differently garinxa ; reverse ko through return garinxa ; elle hamro kwargs lai pass garxa
-# pailo argument chi homeview bata product bhanne page ma redirect garne bhanera banako ; ra arko chi ma kwargs pass garxu as a dictionary ; jasko key or id  chi 'slug' xa ani value 'self.slug' pass garxu
+# pailo argument chi homeview bata product bhanne page ma reverse/redirect garne bhanera banako ; ra arko chi ma kwargs pass garxu as a dictionary ; jasko key or id  chi 'slug' xa ani value 'self.slug' pass garxu
 # Yo agadi ko slug bhaneko chi maile urls.py ma banako thee ni tyo slug or id ho bhane paxadi ko slug chi database ma bhako items ko slug ho
 # agadi ko slug le chi tyo hamro database ma bhayeko harek items ko slug lai k name diyera mathi url bar ma display garne bhanne bujhauxa ;
 # slug matra lekhna painxa bhanne xaina...edi eta patti slug ko name id xa bhane uta ni id nai lina parxa urls.py ma
