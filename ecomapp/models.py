@@ -1,7 +1,7 @@
 from django.db import models
 # Note: Database ma kei kura change garesi (i.e database ko structure chnage hune bittikai) jaile ni migrations chi compulsory garna parxa)
 
-from django.urls import reverse
+from django.urls import reverse # we have to import this cuz we have used reverse() below 
 
 
 # Variables :
@@ -234,7 +234,7 @@ class Contact(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return self.name
+        return self.email
 
 
 # # For owner's information in contact page:

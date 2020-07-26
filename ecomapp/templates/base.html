@@ -9,13 +9,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-	<script> 
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+	<script>
+		addEventListener( "load", function ()
+		{
+			setTimeout( hideURLbar, 0 );
+		}, false );
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
+		function hideURLbar()
+		{
+			window.scrollTo( 0, 1 );
 		}
 	</script>
 	<!--//tags -->
@@ -26,10 +28,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="{% static 'css/popuo-box.css' %}" rel="stylesheet" type="text/css" media="all" />
 	<!--//pop-up-box-->
 	<!-- price range -->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui1.css' %}"> 
+	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui1.css' %}">
 	<!-- fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
-</head> 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800"
+		rel="stylesheet">
+</head>
 
 <body>
 	<!-- top-header -->
@@ -43,10 +46,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- header-bot-->
 			<div class="col-md-4 logo_agile">
 				<h1>
-					<a href="index.html">
+					<a href="/">
+						<!-- Yo / deko bhanya ta jun page ma bhaye ni ta jaba logo ma click garxas homepage ma jaa bhaneko  -->
+
 						<span>G</span>rocery
 						<span>S</span>hoppy
-						<img src="{% static 'images/logo2.png' %}" alt="Error laoding image">
+						<img src="{% static 'images/logo2.png' %}" alt="Error loading image">
 					</a>
 				</h1>
 			</div>
@@ -75,16 +80,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</li>
 				</ul>
 				<!-- //header lists -->
+
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
+					<form action="#" method="GET">
 						<input name="Search" type="search" placeholder="How can we help you today?" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
 					</form>
-				</div> 
+				</div>
 				<!-- //search -->
+
 				<!-- cart details -->
 				<div class="top_nav_right">
 					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
@@ -222,140 +229,140 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<option>Fort Wayne</option>
 					<option>Evansville</option>
 					<option>South Bend</option>
-					<option>Hammond</option>														       
+					<option>Hammond</option>
 				</optgroup>
 				<optgroup label="Iowa">
 					<option>Des Moines</option>
 					<option>Cedar Rapids</option>
 					<option>Davenport</option>
 					<option>Sioux City</option>
-					<option>Waterloo</option>       													
+					<option>Waterloo</option>
 				</optgroup>
 				<optgroup label="Kansas">
 					<option>Wichita</option>
 					<option>Overland Park</option>
 					<option>Kansas City</option>
 					<option>Topeka</option>
-					<option>Olathe  </option>            													
+					<option>Olathe </option>
 				</optgroup>
 				<optgroup label="Kentucky">
 					<option>Louisville</option>
 					<option>Lexington</option>
 					<option>Bowling Green</option>
 					<option>Owensboro</option>
-					<option>Covington</option>        														
+					<option>Covington</option>
 				</optgroup>
 				<optgroup label="Louisiana">
 					<option>New Orleans</option>
 					<option>Baton Rouge</option>
 					<option>Shreveport</option>
 					<option>Metairie</option>
-					<option>Lafayette</option>          														
+					<option>Lafayette</option>
 				</optgroup>
 				<optgroup label="Maine">
 					<option>Portland</option>
 					<option>Lewiston</option>
 					<option>Bangor</option>
 					<option>South Portland</option>
-					<option>Auburn</option>         														
+					<option>Auburn</option>
 				</optgroup>
 				<optgroup label="Maryland">
 					<option>Baltimore</option>
 					<option>Frederick</option>
 					<option>Rockville</option>
 					<option>Gaithersburg</option>
-					<option>Bowie</option>         														
+					<option>Bowie</option>
 				</optgroup>
 				<optgroup label="Massachusetts">
 					<option>Boston</option>
 					<option>Worcester</option>
 					<option>Springfield</option>
 					<option>Lowell</option>
-					<option>Cambridge</option>  
+					<option>Cambridge</option>
 				</optgroup>
 				<optgroup label="Michigan">
 					<option>Detroit</option>
 					<option>Grand Rapids</option>
 					<option>Warren</option>
 					<option>Sterling Heights</option>
-					<option>Lansing</option> 
+					<option>Lansing</option>
 				</optgroup>
 				<optgroup label="Minnesota">
 					<option>Minneapolis</option>
 					<option>St. Paul</option>
 					<option>Rochester</option>
 					<option>Duluth</option>
-					<option>Bloomington</option>      														
+					<option>Bloomington</option>
 				</optgroup>
 				<optgroup label="Mississippi">
 					<option>Jackson</option>
 					<option>Gulfport</option>
 					<option>Southaven</option>
 					<option>Hattiesburg</option>
-					<option>Biloxi</option>         														
+					<option>Biloxi</option>
 				</optgroup>
 				<optgroup label="Missouri">
 					<option>Kansas City</option>
 					<option>St. Louis</option>
 					<option>Springfield</option>
 					<option>Independence</option>
-					<option>Columbia</option>            														
+					<option>Columbia</option>
 				</optgroup>
 				<optgroup label="Montana">
 					<option>Billings</option>
 					<option>Missoula</option>
 					<option>Great Falls</option>
 					<option>Bozeman</option>
-					<option>Butte-Silver Bow</option>         														
+					<option>Butte-Silver Bow</option>
 				</optgroup>
 				<optgroup label="Nebraska">
 					<option>Omaha</option>
 					<option>Lincoln</option>
 					<option>Bellevue</option>
 					<option>Grand Island</option>
-					<option>Kearney</option>        													
+					<option>Kearney</option>
 				</optgroup>
 				<optgroup label="Nevada">
 					<option>Las Vegas</option>
 					<option>Henderson</option>
 					<option>North Las Vegas</option>
 					<option>Reno</option>
-					<option>Sunrise Manor</option>            													
+					<option>Sunrise Manor</option>
 				</optgroup>
 				<optgroup label="New Hampshire">
 					<option>Manchesters</option>
 					<option>Nashua</option>
 					<option>Concord</option>
 					<option>Dover</option>
-					<option>Rochester</option>              													
+					<option>Rochester</option>
 				</optgroup>
 				<optgroup label="New Jersey">
 					<option>Newark</option>
 					<option>Jersey City</option>
 					<option>Paterson</option>
 					<option>Elizabeth</option>
-					<option>Edison</option> 
+					<option>Edison</option>
 				</optgroup>
 				<optgroup label="New Mexico">
 					<option>Albuquerque</option>
 					<option>Las Cruces</option>
 					<option>Rio Rancho</option>
 					<option>Santa Fe</option>
-					<option>Roswell</option>       
+					<option>Roswell</option>
 				</optgroup>
 				<optgroup label="New York">
 					<option>New York</option>
 					<option>Buffalo</option>
 					<option>Rochester</option>
 					<option>Yonkers</option>
-					<option>Syracuse</option>        														
+					<option>Syracuse</option>
 				</optgroup>
 				<optgroup label="North Carolina">
 					<option>Charlotte</option>
 					<option>Raleigh</option>
 					<option>Greensboro</option>
 					<option>Winston-Salem</option>
-					<option>Durham</option>          														
+					<option>Durham</option>
 				</optgroup>
 				<optgroup label="North Dakota">
 					<option>Fargo</option>
@@ -369,99 +376,99 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<option>Cleveland</option>
 					<option>Cincinnati</option>
 					<option>Toledo</option>
-					<option>Akron</option>      
+					<option>Akron</option>
 				</optgroup>
 				<optgroup label="Oklahoma">
 					<option>Oklahoma City</option>
 					<option>Tulsa</option>
 					<option>Norman</option>
 					<option>Broken Arrow</option>
-					<option>Lawton</option>        														
+					<option>Lawton</option>
 				</optgroup>
 				<optgroup label="Oregon">
 					<option>Portland</option>
 					<option>Eugene</option>
 					<option>Salem</option>
 					<option>Gresham</option>
-					<option>Hillsboro</option>          														
+					<option>Hillsboro</option>
 				</optgroup>
 				<optgroup label="Pennsylvania">
 					<option>Philadelphia</option>
 					<option>Pittsburgh</option>
 					<option>Allentown</option>
 					<option>Erie</option>
-					<option>Reading</option>         														
+					<option>Reading</option>
 				</optgroup>
 				<optgroup label="Rhode Island">
 					<option>Providence</option>
 					<option>Warwick</option>
 					<option>Cranston</option>
 					<option>Pawtucket</option>
-					<option>East Providence</option>   
+					<option>East Providence</option>
 				</optgroup>
 				<optgroup label="South Carolina">
 					<option>Columbia</option>
 					<option>Charleston</option>
 					<option>North Charleston</option>
 					<option>Mount Pleasant</option>
-					<option>Rock Hill</option> 
+					<option>Rock Hill</option>
 				</optgroup>
 				<optgroup label="South Dakota">
 					<option>Sioux Falls</option>
 					<option>Rapid City</option>
 					<option>Aberdeen</option>
 					<option>Brookings</option>
-					<option>Watertown</option> 
+					<option>Watertown</option>
 				</optgroup>
 				<optgroup label="Tennessee">
 					<option>Memphis</option>
 					<option>Nashville</option>
 					<option>Knoxville</option>
 					<option>Chattanooga</option>
-					<option>Clarksville</option>       
+					<option>Clarksville</option>
 				</optgroup>
 				<optgroup label="Texas">
 					<option>Houston</option>
 					<option>San Antonio</option>
 					<option>Dallas</option>
 					<option>Austin</option>
-					<option>Fort Worth</option>   
+					<option>Fort Worth</option>
 				</optgroup>
 				<optgroup label="Utah">
 					<option>Salt Lake City</option>
 					<option>West Valley City</option>
 					<option>Provo</option>
 					<option>West Jordan</option>
-					<option>Orem</option>   
-				</optgroup>	
+					<option>Orem</option>
+				</optgroup>
 				<optgroup label="Vermont">
 					<option>Burlington</option>
 					<option>Essex</option>
 					<option>South Burlington</option>
 					<option>Colchester</option>
-					<option>Rutland</option>   
+					<option>Rutland</option>
 				</optgroup>
 				<optgroup label="Virginia">
 					<option>Virginia Beach</option>
 					<option>Norfolk</option>
 					<option>Chesapeake</option>
 					<option>Arlington</option>
-					<option>Richmond</option> 
-				</optgroup>	
+					<option>Richmond</option>
+				</optgroup>
 				<optgroup label="Washington">
 					<option>Seattle</option>
 					<option>Spokane</option>
 					<option>Tacoma</option>
 					<option>Vancouver</option>
-					<option>Bellevue</option> 
-				</optgroup>	
+					<option>Bellevue</option>
+				</optgroup>
 				<optgroup label="West Virginia">
 					<option>Charleston</option>
 					<option>Huntington</option>
 					<option>Parkersburg</option>
 					<option>Morgantown</option>
-					<option>Wheeling</option> 
-				</optgroup>	
+					<option>Wheeling</option>
+				</optgroup>
 				<optgroup label="Wisconsin">
 					<option>Milwaukee</option>
 					<option>Madison</option>
@@ -532,7 +539,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="modal-body modal-body-sub_agile">
 					<div class="main-mailposi">
 						<span class="fa fa-envelope-o" aria-hidden="true"></span>
-					</div> 
+					</div>
 					<div class="modal_body_left modal_body_left1">
 						<h3 class="agileinfo_sign">Sign Up</h3>
 						<p>
@@ -546,10 +553,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<input type="email" placeholder="E-mail" name="Email" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Password" name="password" id="password1" required="">
+								<input type="password" placeholder="Password" name="password" id="password1"
+									required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Confirm Password" name="Confirm Password" id="password2" required="">
+								<input type="password" placeholder="Confirm Password" name="Confirm Password"
+									id="password2" required="">
 							</div>
 							<input type="submit" value="Sign Up">
 						</form>
@@ -566,32 +575,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //signup Model -->
 	<!-- //header-bot -->
 
+
 	<!-- navigation -->
+	
 	<div class="ban-top">
 		<div class="container">
 			<div class="agileits-navi_search">
-				<form action="#" method="post"> 
-					<select id="agileinfo-nav_search" name="agileinfo_search" required="">
 
-						<option value="">All Categories</option>
-						{% for cat in categories %} 
-						<!-- # database ma jane part is cat.slog(mathi url ma aune id yei slog wala ho) and template ma view hune part is cat.title  -->
+				<option value=""> All Categories </option>
 
-						<!-- euta category matra rakhne ani baki sbai hataidena cuz loop launa laa xa bhane dherai category kina chiyo  -->
-						
-						<option value="{{cat.slog}}">{{ cat.title}}</option> 
-						{% endfor %} 
-					</select>
+				{% for cat in categories %}
+				 <a href="{{cat.get_category_url}}"> <option value="{{cat.slug}}"> {{cat.title}}  </option>
+				 </a> 
+				</option>
 
-				</form>
+				{% endfor %}
 			</div>
+			<!-- # database ma jane part is cat.slug(mathi url ma aune id yei slug wala ho) and template ma view hune part is {{cat.title}}  -->
+
+			<!-- euta category matra rakhne ani baki sbai hataidena cuz loop launa laa xa bhane dherai category kina chiyo  -->
+
 			<div class="top_nav_left">
 				<nav class="navbar navbar-default">
 					<div class="container-fluid">
 						<!-- Brand and toggle get grouped for better mobile display -->
 						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-							    aria-expanded="false">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+								data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
@@ -606,11 +616,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
-						
+
 								{% for cat in categories %}
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{cat.title}}
-										<span class="caret"></span>
+									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown"
+										role="button" aria-haspopup="true" aria-expanded="false"> {{cat.title }}
+										<span class="caret"> </span>
 									</a>
 									<ul class="dropdown-menu multi-column columns-3">
 										<div class="agile_inner_drop_nav_info">
@@ -622,21 +633,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<!-- yo field ko id ra category ko id same xa
 													  bhane matra subcategory lai view garaune  -->
 													<li>
-														<a href="product2.html">{{ sub.title }}</a>
+														<!-- # aba subcategory ko link ma click garesi sidai redirect hunxa  -->
+														<a href="{{sub.get_subcategory_url }}">{{ sub.title }}</a>
 													</li>
 													{% endif %}
 													{% endfor %}
-												
+
 												</ul>
 											</div>
-											
+
 											<div class="clearfix"></div>
 										</div>
 									</ul>
 								</li>
 								{% endfor %}
-							
-								
+
+
 							</ul>
 						</div>
 					</div>
@@ -644,15 +656,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-    <!-- //navigation -->
-	
-	
-        {% block content %}
-
-        {% endblock %}
+	<!-- //navigation -->
 
 
-    <!-- footer start -->
+	{% block content %}
+
+	{% endblock %}
+
+
+	<!-- footer start -->
 	<div class="footer-top">
 		<div class="container-fluid">
 			<div class="col-xs-8 agile-leftmk">
@@ -678,9 +690,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<!-- footer first section -->
 			<p class="footer-main">
-				<span>"Grocery Shoppy"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+				<span>"Grocery Shoppy"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+				fugit, sed quia consequuntur
+				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error
+				sit voluptatem
+				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+				quasi architecto
 				beatae vitae dicta sunt explicabo.</p>
 			<!-- //footer first section -->
 			<!-- footer second section -->
@@ -850,14 +865,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="agile-sometext">
 				<div class="sub-some">
 					<h5>Online Grocery Shopping</h5>
-					<p>Order online. All your favourite products from the low price online supermarket for grocery home delivery in Delhi,
-						Gurgaon, Bengaluru, Mumbai and other cities in India. Lowest prices guaranteed on Patanjali, Aashirvaad, Pampers, Maggi,
-						Saffola, Huggies, Fortune, Nestle, Amul, MamyPoko Pants, Surf Excel, Ariel, Vim, Haldiram's and others.</p>
+					<p>Order online. All your favourite products from the low price online supermarket for grocery home
+						delivery in Delhi,
+						Gurgaon, Bengaluru, Mumbai and other cities in India. Lowest prices guaranteed on Patanjali,
+						Aashirvaad, Pampers, Maggi,
+						Saffola, Huggies, Fortune, Nestle, Amul, MamyPoko Pants, Surf Excel, Ariel, Vim, Haldiram's and
+						others.</p>
 				</div>
 				<div class="sub-some">
 					<h5>Shop online with the best deals & offers</h5>
-					<p>Now Get Upto 40% Off On Everyday Essential Products Shown On The Offer Page. The range includes Grocery, Personal Care,
-						Baby Care, Pet Supplies, Healthcare and Other Daily Need Products. Discount May Vary From Product To Product.</p>
+					<p>Now Get Upto 40% Off On Everyday Essential Products Shown On The Offer Page. The range includes
+						Grocery, Personal Care,
+						Baby Care, Pet Supplies, Healthcare and Other Daily Need Products. Discount May Vary From
+						Product To Product.</p>
 				</div>
 				<!-- brands -->
 				<div class="sub-some">
@@ -1026,8 +1046,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- popup modal (for signin & signup)-->
 	<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
 	<script>
-		$(document).ready(function () {
-			$('.popup-with-zoom-anim').magnificPopup({
+		$( document ).ready( function ()
+		{
+			$( '.popup-with-zoom-anim' ).magnificPopup( {
 				type: 'inline',
 				fixedContentPos: false,
 				fixedBgPos: true,
@@ -1037,9 +1058,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				midClick: true,
 				removalDelay: 300,
 				mainClass: 'my-mfp-zoom-in'
-			});
+			} );
 
-		});
+		} );
 	</script>
 	<!-- Large modal -->
 	<!-- <script>
@@ -1052,22 +1073,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script>
 		paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
-		paypalm.minicartk.cart.on('checkout', function (evt) {
+		paypalm.minicartk.cart.on( 'checkout', function ( evt )
+		{
 			var items = this.items(),
 				len = items.length,
 				total = 0,
 				i;
 
 			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
+			for ( i = 0; i < len; i++ )
+			{
+				total += items[ i ].get( 'quantity' );
 			}
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+			if ( total < 3 )
+			{
+				alert( 'The minimum order quantity is 3. Please add more to your shopping cart before checking out' );
 				evt.preventDefault();
 			}
-		});
+		} );
 	</script>
 	<!-- //cart-js -->
 
@@ -1075,27 +1099,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="{% static 'js/jquery-ui.js' %}"></script>
 	<script>
 		//<![CDATA[ 
-		$(window).load(function () {
-			$("#slider-range").slider({
+		$( window ).load( function ()
+		{
+			$( "#slider-range" ).slider( {
 				range: true,
 				min: 0,
 				max: 9000,
-				values: [50, 6000],
-				slide: function (event, ui) {
-					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+				values: [ 50, 6000 ],
+				slide: function ( event, ui )
+				{
+					$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 				}
-			});
-			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+			} );
+			$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 
-		}); //]]>
+		} ); //]]>
 	</script>
 	<!-- //price range (top products) -->
 
 	<!-- flexisel (for special offers) -->
 	<script src=" {% static 'js/jquery.flexisel.js'%}"></script>
 	<script>
-		$(window).load(function () {
-			$("#flexiselDemo1").flexisel({
+		$( window ).load( function ()
+		{
+			$( "#flexiselDemo1" ).flexisel( {
 				visibleItems: 3,
 				animationSpeed: 1000,
 				autoPlay: true,
@@ -1116,26 +1143,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						visibleItems: 2
 					}
 				}
-			});
+			} );
 
-		});
+		} );
 	</script>
 	<!-- //flexisel (for special offers) -->
 
 	<!-- password-script -->
 	<script>
-		window.onload = function () {
-			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
+		window.onload = function ()
+		{
+			document.getElementById( "password1" ).onchange = validatePassword;
+			document.getElementById( "password2" ).onchange = validatePassword;
 		}
 
-		function validatePassword() {
-			var pass2 = document.getElementById("password2").value;
-			var pass1 = document.getElementById("password1").value;
-			if (pass1 != pass2)
-				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+		function validatePassword()
+		{
+			var pass2 = document.getElementById( "password2" ).value;
+			var pass1 = document.getElementById( "password1" ).value;
+			if ( pass1 != pass2 )
+				document.getElementById( "password2" ).setCustomValidity( "Passwords Don't Match" );
 			else
-				document.getElementById("password2").setCustomValidity('');
+				document.getElementById( "password2" ).setCustomValidity( '' );
 			//empty string means no validation error
 		}
 	</script>
@@ -1149,21 +1178,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="{% static 'js/move-top.js'%}"></script>
 	<script src="{% static 'js/easing.js'%}"></script>
 	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
+		jQuery( document ).ready( function ( $ )
+		{
+			$( ".scroll" ).click( function ( event )
+			{
 				event.preventDefault();
 
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 1000);
-			});
-		});
+				$( 'html,body' ).animate( {
+					scrollTop: $( this.hash ).offset().top
+				}, 1000 );
+			} );
+		} );
 	</script>
 	<!-- //end-smooth-scrolling -->
 
 	<!-- smooth-scrolling-of-move-up -->
 	<script>
-		$(document).ready(function () {
+		$( document ).ready( function ()
+		{
 			/*
 			var defaults = {
 				containerID: 'toTop', // fading element id
@@ -1172,18 +1204,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				easingType: 'linear' 
 			};
 			*/
-			$().UItoTop({
+			$().UItoTop( {
 				easingType: 'easeOutQuart'
-			});
+			} );
 
-		});
+		} );
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->
-	<script src="{% static 'js/bootstrap.js'%}"> </script> 
+	<script src="{% static 'js/bootstrap.js'%}"> </script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
 
 </body>
+
 </html>

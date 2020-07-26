@@ -41,9 +41,17 @@ class BaseView(View):  # inheriting generic view
 # VVI note: edi yo BaseView class lai aru class haru le inherit garxan bhane ta pratyak class ma jj query haru define bhako xa; tyo queries haru chi sabai page le use garna paune bho
 
 
+# yo categories ra subcategories sabai page ma inherit garne ho bhane yei BaseView class ma rakhdine
+# BaseView class ma rakheko query haru bhaneko sab page ma inherit hunxa by default
+# Tara yo tala tira ko class haru ma chi j query lekhya xa tei respective page ko lagi matra apply hunxa 
+ 
+    template_views['categories'] = Category.objects.all()
+    template_views['subcategories'] = Subcategory.objects.all()
+
+
 # Yo muniko class based view chi html page(in this case index.html) ma gayera value lai view garauna ho
 # tesko lagi BaseView class lai yaa inherit garna parxa:
-# inherit garna ko main readon chi tyo template_views bhanne dictionary lai aba yaa ma use garxu k
+# inherit garna ko main reason chi tyo template_views bhanne dictionary lai aba yaa ma use garxu k
 # yesari duita class based view banara garyo bhane code chi nikai xoto hunxa k
 
 class HomeView(BaseView):
@@ -69,8 +77,6 @@ class HomeView(BaseView):
         # Bhayebhar ko sab item lai front page ma display garayera ta kaam xaina ;tya space pani thorai hunxa ra site nai dhilo load hunxa tyo bhayesi ta ; so front= true garera filter gardesi harek category ko hamle chaheko teen ota item matra front ma display hunxa 
 
         self.template_views['items'] = Item.objects.filter(product_front_page= True)
-        self.template_views['categories'] = Category.objects.all()
-        self.template_views['subcategories'] = Subcategory.objects.all()
         self.template_views['slider'] = Slider.objects.all()
         self.template_views['ads'] = Ad.objects.all()
         self.template_views['special_offers'] = Item.objects.filter(special_offer = True)
@@ -134,4 +140,12 @@ class SubcategoryView(BaseView):
         subcategory_id = Subcategory.objects.get(slug=slug).id
         self.template_views['subcategory_items'] = Item.objects.filter(subcategory_id=subcategory_id)
         return render(request,'subcategory.html',self.template_views)
-# Same concept for subcategory 
+# Same concept for subcategory as discussed above 
+
+
+# class based view for searching items/products 
+# search ko lagi slug pathauna pardaina 
+class SearchView(BaseView):
+    def get(self,request):
+
+        return render(request,'search.html',self.template_views)
