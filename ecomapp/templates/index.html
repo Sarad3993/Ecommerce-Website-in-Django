@@ -366,7 +366,9 @@
 					<div class="col-md-4 product-men">
 						<div class="men-pro-item simpleCart_shelfItem">
 							<div class="men-thumb-item">
-								<img src="{{item.image}}" height ='160' width='160' alt="Error loading image">
+							
+							<!-- Paxadi .url include garna parxa if we have uploaded our image through ImageField() locally  -->
+								<img src="{{item.image.url}}" height ='160' width='160' alt="Error loading image">
 								<div class="men-cart-pro">
 									<div class="inner-men-cart-pro">
 										<!-- # Yaa aba tyo models ma banako function call garne  -->
