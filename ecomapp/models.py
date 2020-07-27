@@ -81,7 +81,8 @@ class Item(models.Model):
     # default means kei narakhe si 0 set hunxa afai
     # cuz sabai product ma discount hunxa bhanne xaina ni ta; teso bela so edi tyo field empty xodna khojyo bhane error dinxa k ; so if we donot wish to give discount on certain product leave it as default= 0 or we can also do blank= True (tyo field required xaina hai bhaneko )
 
-    image = models.TextField()  # suru ma image lai TextField() nai rakdine k .... paxi yekai choti image file upload garne bela yo model bhari jaa jaa chinxa sab ma ImageField() set gardai jane ho
+    # image = models.TextField()  # suru ma image lai TextField() nai rakdine k .... paxi yekai choti image file upload garne bela yo model bhari jaa jaa chinxa sab ma ImageField() set gardai jane ho
+    image = models.ImageField(upload_to='media')
 
     # sakesamma image chi yesto choose garne jasko background white xax; ecommerce ma ta image le nai ho sabse thulo role khelne ; tei bhar image chi dami huna paro; for that halka photo editing skills bhako ramro
 

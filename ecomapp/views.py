@@ -147,5 +147,13 @@ class SubcategoryView(BaseView):
 # search ko lagi slug pathauna pardaina 
 class SearchView(BaseView):
     def get(self,request):
-
+        # query bhanne euta variable banauxu jasle template(base.html) bata aako data lai handle garxa 
+        # Uta template bata pathako Search lai yaa catch garera render garna parxa ;
+        # name ="Search " bhanne xa ni input tag bhitra ho tei ho
+        # __icontains is for search 
+        query = request.GET.get('Search','None')
+        if not None:
+            self.template_views['search_result'] =Item.objects.filter(title__icontains=query)
+        self.template_views['search_for'] = query
         return render(request,'search.html',self.template_views)
+
