@@ -100,7 +100,7 @@ class Item(models.Model):
     # unique = True means harek item ko lagi xuttai xuttai slug hunxa hai bhaneko ; euta item ma use gareko slug arko ma edi mistakely use garim bhane ta database ma usle khojda tei id ko duita item hunxa; so error dinxa
 
     # aba jastai kunai pani item stock ma xa ki xaina ; out of stock bhaisako ki; ho tesko bare ma ni xuttai fields banauna sakxau
-    stock = models.CharField(max_length=100, choices=STOCK)
+    stock = models.CharField(max_length=100, choices=STOCK) 
     # choices is used to make dropdown
     # STOCK bhanne euta variable banaidiyeu ra mathi teslai define gardiyeu
 

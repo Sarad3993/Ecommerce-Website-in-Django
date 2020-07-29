@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 # for class based views we have to import View
 from django.views.generic.base import View
 from .models import *
+from django.contrib.auth.models import User 
+from django.contrib import messages 
+
 
 
 # Function based view 
@@ -157,3 +160,39 @@ class SearchView(BaseView):
         self.template_views['search_for'] = query
         return render(request,'search.html',self.template_views)
 
+
+# For Sign Up / Register 
+# we create a function based view 
+# NEVER DO sihn up and login in class based view 
+def signup(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        cpassword = request.POST['cpassword']
+
+        if password == cpassword:
+            # aba maile tyo username/email exists garxa ki nai database tyo herna parne hunxa k; if exits garxa bhane further proceed garna nadine 
+            if User.objects.filter(username=username).exists():
+                messages.error(request,"The username is already taken")
+                return redirect('ecomapp:signup')
+            elif User.objects.filter(email=email).exists():
+                messages.error(request,"The email is already registered")
+                return redirect('ecomapp:signup')
+
+            else:
+                user = User.objects.create_user(
+                    username = username,
+                    email = email,
+                    password = password 
+                ) 
+                user.save()
+                messages.success(request,"You are registered successfully!!! Go to login")
+                # sign up bhayesi directly login page ma redirect hunxa 
+                return redirect('ecomapp:signup')
+        else:
+            messages.error(request,"Password does not match")
+                # sign up bhayesi directly login page ma redirect hunxa 
+            return redirect('ecomapp:signup')  
+
+    return render(request,'signup.html') 
