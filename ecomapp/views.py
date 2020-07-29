@@ -176,6 +176,7 @@ def signup(request):
             if User.objects.filter(username=username).exists():
                 messages.error(request,"The username is already taken")
                 return redirect('ecomapp:signup')
+                
             elif User.objects.filter(email=email).exists():
                 messages.error(request,"The email is already registered")
                 return redirect('ecomapp:signup')

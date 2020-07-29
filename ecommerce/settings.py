@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', 
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -127,3 +127,6 @@ MEDIA_URL ='media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'') 
 # yaa khali('') xoddiye ni hunxa or xuttai euta folder banauna ni sakinxa jasle root folder directory denote garxa ...ani tya bhitra chi media folder banne ho k; but yo case ma media folder nai sidai root directory ma banxa 
 
+# login ra logout garesi kaa redirect hune bhanne 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL ='/'

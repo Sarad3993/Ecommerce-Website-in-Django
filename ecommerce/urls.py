@@ -24,7 +24,8 @@ from django.conf.urls.static import static
 # This urlpatterns is for static urls  
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ecomapp.urls',namespace='home')), 
+    path('', include('ecomapp.urls',namespace='home')),
+    path('accounts/',include('django.contrib.auth.urls')),
 ] 
 
 
