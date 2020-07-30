@@ -188,6 +188,9 @@ def signup(request):
                     password = password 
                 ) 
                 user.save()
+                user = auth.authenticate(username=username,password=password)
+                auth.login(request,user)
+                return redirect('/')
                 messages.success(request,"You are registered successfully!!! Go to login")
                 # sign up bhayesi directly home page ma redirect garne 
                 return redirect('ecomapp:signup')
@@ -210,7 +213,7 @@ def login(request):
             auth.login(request,user)
             return redirect('/')
         else:
-            messages.error(request,"Invalid Login!!!")
+            messages.error(request,"Username or Password do not match ")
             return redirect('ecomapp:login')
     return render(request,'login.html')
 
@@ -220,3 +223,20 @@ def logout(request):
     return redirect('/')
 
 
+# for cart 
+
+def cart(request):
+
+    return redirect(request,'checkout.html')
+
+def add_to_cart(request):
+    if request.method == 'POST':
+        slug = request.POST['slug']
+        my_cart = Cart.objects.create(
+                    username = request.user,
+                    slug = slug, 
+                     ) 
+        my_cart.save()
+
+        return redirect('/cart') 
+    

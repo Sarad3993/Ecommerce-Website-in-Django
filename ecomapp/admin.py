@@ -24,6 +24,8 @@ admin.site.register(Contact)
 
 admin.site.register(Information)
 
+admin.site.register(Cart) 
+
 
 
 

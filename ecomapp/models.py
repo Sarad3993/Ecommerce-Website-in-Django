@@ -3,6 +3,8 @@ from django.db import models
 
 from django.urls import reverse # we have to import this cuz we have used reverse() below 
 
+from django.conf import settings
+
 
 # Variables :
 # for active or default(inactive)
@@ -179,6 +181,11 @@ class Item(models.Model):
 # Yeta sun kunai pani class bhitra bata certain method lai (in this case get_item_url()) kuani na kunai thau (jastai yo case ma chi template ma) bata call garne banako xu re...ani tya chi kunai certain loop bhitra kunai pani link create gareko xu bhane tyo link bhitra bata maile yo function lai call garna pauxu...ani tesko lagi maile euta dictionary pass garnu parne hunxa jasma slug bhanne key ko value yesko original mathi bhako slug janxa as self.slug....ho tei bhara na ta ...click garda mathi url paxadi slug dekhinxa
 
 
+# for cart:
+    def add_to_cart(self):
+        return reverse("ecomapp:add_to_cart",kwargs={'slug':self.slug})
+
+
 # For Slider/ Carousel/Banner:
 class Slider(models.Model):
     # tya slider ko image mathi aba majale afule j title lekhna ni payo
@@ -247,3 +254,13 @@ class Information(models.Model):
 
     def __str__(self):
         return self.address
+
+class Cart(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    # cart ma jane item ko slug 
+    slug = models.TextField()
+    quantity = models.IntegerField(default=1)
+    checkout = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
