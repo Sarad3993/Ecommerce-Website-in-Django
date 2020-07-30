@@ -3,7 +3,7 @@ from django.shortcuts import render , redirect
 from django.views.generic.base import View
 from .models import *
 from django.contrib.auth.models import User 
-from django.contrib import messages 
+from django.contrib import messages , auth
 
 
 
@@ -176,7 +176,7 @@ def signup(request):
             if User.objects.filter(username=username).exists():
                 messages.error(request,"The username is already taken")
                 return redirect('ecomapp:signup')
-                
+
             elif User.objects.filter(email=email).exists():
                 messages.error(request,"The email is already registered")
                 return redirect('ecomapp:signup')
@@ -189,11 +189,34 @@ def signup(request):
                 ) 
                 user.save()
                 messages.success(request,"You are registered successfully!!! Go to login")
-                # sign up bhayesi directly login page ma redirect hunxa 
+                # sign up bhayesi directly home page ma redirect garne 
                 return redirect('ecomapp:signup')
         else:
-            messages.error(request,"Password does not match")
-                # sign up bhayesi directly login page ma redirect hunxa 
+            messages.error(request,"Passwords do not not match")
+                
             return redirect('ecomapp:signup')  
 
     return render(request,'signup.html') 
+
+# for custom login:
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect('/')
+        else:
+            messages.error(request,"Invalid Login!!!")
+            return redirect('ecomapp:login')
+    return render(request,'login.html')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
+
