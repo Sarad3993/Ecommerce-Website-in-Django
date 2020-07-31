@@ -4,8 +4,7 @@ from django.views.generic.base import View
 from .models import *
 from django.contrib.auth.models import User 
 from django.contrib import messages , auth
-
-
+from django.contrib.auth.decorators import login_required
 
 # Function based view 
 def contact(request):
@@ -224,19 +223,35 @@ def logout(request):
 
 
 # for cart 
-
+# main UI ma visible garaune cart yo ho 
 def cart(request):
+    views = {}
+    views['carts'] = Cart.objects.filter(checkout=False,user=request.user) # checkout nabhako item haru matra cart ma display hunu paryo tesko lagi checkout lai True gardine ; ani request.user means tyo session maa bhako user lai matra garna dee bhaneko 
+    return render(request,'cart.html',views)
 
-    return redirect(request,'checkout.html')
 
+# yo talako add to cart chi database ma value halna matra ho 
+@login_required 
 def add_to_cart(request):
     if request.method == 'POST':
+        title = request.POST['title']
         slug = request.POST['slug']
-        my_cart = Cart.objects.create(
-                    username = request.user,
-                    slug = slug, 
-                     ) 
-        my_cart.save()
+        image = request.POST['image']
+        price = request.POST['price']
+        description = request.POST['description']
 
-        return redirect('/cart') 
+        my_cart = Cart.objects.create(
+                    user = request.user,
+                    slug = slug,
+                    title = title,
+                    image = image, 
+                    price = price,
+                    description = description,
+                    ) 
+        my_cart.save() 
+        return redirect('ecomapp:cart') 
     
+    else:
+        return redirect('/')
+
+

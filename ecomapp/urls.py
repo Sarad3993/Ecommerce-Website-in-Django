@@ -18,7 +18,7 @@ urlpatterns = [
     path('signup',signup,name="signup"),
     path('login',login,name="login"),
     path('cart',cart,name="cart"),
-    path('add_to_cart',add_to_cart,name='add_to_cart')
+    path('add_to_cart',add_to_cart,name='add_to_cart'),
     
 ]
 

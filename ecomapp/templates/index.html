@@ -411,11 +411,30 @@
 									<form action="/add_to_cart" method="POST">
 										{% csrf_token %}
 										<fieldset>
-											<input type="hidden" name="slug"> 
-										
-				
-											<input type="submit" name="submit" value="Add to cart" class="button" />
+											<!-- hidden gareko bela jaile ni value rakhna parxa; hidden bhaneko form bata  data backend ma chi giraxa but we wont't see that  -->
+											<input type="hidden" name="slug" value="{{item.slug}}"> 
+
+											<input type="hidden" name="title" value="{{item.title}}"> 
+
+											<input type="hidden" name="image" value="{{item.image.url}}">
+											
+											
+											<input type="hidden" name="description" value="{{item.description}}">
+											
+											<input type="hidden" name="quantity" value="{{item.quantity}}">
+
+											{% if item.discounted_price > 0 %}
+
+															
+											<input type="hidden" name="price" value="{{item.discounted_price}}">
+											{% else %}
+
+											<input type="hidden" name="price" value="{{item.price}}">
+
+											{% endif %}
+											<input type="submit" name="price" value="Add to cart" class="button" />
 										</fieldset>
+
 									</form>
 								</div>
 							</div>

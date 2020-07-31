@@ -257,10 +257,15 @@ class Information(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+
     # cart ma jane item ko slug 
     slug = models.TextField()
-    quantity = models.IntegerField(default=1)
-    checkout = models.BooleanField(default=False)
+    title = models.CharField(max_length=200,blank=True)
+    image = models.TextField(blank=True)
+    description = models.TextField(blank=True)
+    price = models.IntegerField(default=0) 
+    quantity = models.IntegerField(default=1)   
+    checkout = models.BooleanField (default=False)                     
 
     def __str__(self):
         return self.user.username
