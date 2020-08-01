@@ -231,7 +231,7 @@ def cart(request):
 
 
 # yo talako add to cart chi database ma value halna matra ho 
-@login_required 
+@login_required
 def add_to_cart(request):
     if request.method == 'POST':
         title = request.POST['title']
@@ -250,7 +250,6 @@ def add_to_cart(request):
                     ) 
         my_cart.save() 
         return redirect('ecomapp:cart') 
-    
     else:
         return redirect('/')
 
