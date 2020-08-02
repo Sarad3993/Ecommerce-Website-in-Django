@@ -269,3 +269,6 @@ class Cart(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def delete_cart(self):
+        return reverse("ecomapp:delete_cart",kwargs={'slug':self.slug})

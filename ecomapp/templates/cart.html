@@ -47,11 +47,11 @@
 								<h6><strong>Rs.{{cart.price}} <span class="text-muted">x</span></strong></h6> 
 							</div> 
 							<div class="col-xs-4">
-								<input type="text" name="quantity" class="form-control input-sm" value="1"> 
+								<input type="text" name="quantity" class="form-control input-sm" value="{{cart.quantity}}"> 
 							</div> 
 							<div class="col-xs-2">
 								<button type="button" class="btn btn-link btn-xs">
-									<span class="glyphicon glyphicon-trash"> </span>
+									<a href ="{{cart.delete_cart}}"> <span class="glyphicon glyphicon-trash"> </a> </span> 
 								</button>
 							</div>
 						</div>

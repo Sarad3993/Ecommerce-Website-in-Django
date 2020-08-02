@@ -239,8 +239,15 @@ def add_to_cart(request):
         image = request.POST['image']
         price = request.POST['price']
         description = request.POST['description']
-
-        my_cart = Cart.objects.create(
+        # if there is already an item in cart ; just update that value 
+        if Cart.objects.filter(slug=slug).exists():
+            quantity= Cart.objects.get(slug=slug).quantity 
+            # filter le no of values return garxa but get le euta matra value return garxa 
+            Cart.objects.filter(slug=slug).update(quantity=quantity+1)
+            return redirect('ecomapp:cart') 
+        # else if cart is empty; create the new cart 
+        else:
+            my_cart = Cart.objects.create(
                     user = request.user,
                     slug = slug,
                     title = title,
@@ -248,9 +255,29 @@ def add_to_cart(request):
                     price = price,
                     description = description,
                     ) 
-        my_cart.save() 
-        return redirect('ecomapp:cart') 
+            my_cart.save() 
+            return redirect('ecomapp:cart') 
     else:
         return redirect('/')
+
+# to delete items in cart 
+def delete_cart(request,slug):
+    if Cart.objects.filter(slug=slug).exists():
+            Cart.objects.filter(slug=slug).delete()
+            messages.success(request,"Item is deleted.")
+            return redirect('ecomapp:cart')
+    else:
+            return redirect('ecomapp:cart')
+            messages.error(request,"Item is not in your database ")
+    
+# class ContactView(BaseView):
+#     def get(self,request):
+#         if self.request.method == 'POST':
+#             self.name == self.request.POST['name']
+#             self.email == self.request.POST['email']
+#             self.subject == self.request.POST['subject']
+#             self.message == self.request.POST['message']
+
+
 
 
