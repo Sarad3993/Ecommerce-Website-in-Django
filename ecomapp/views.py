@@ -5,26 +5,27 @@ from .models import *
 from django.contrib.auth.models import User 
 from django.contrib import messages , auth
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMessage
 
-# Function based view 
-def contact(request):
-    inform = {}  # empty dictionary
-    inform['information'] = Information.objects.all()
+# # Function based view 
+# def contact(request):
+#     inform = {}  # empty dictionary
+#     inform['information'] = Information.objects.all()
 
-    if request.method == 'POST':
-        name = request.POST['name']
-        subject = request.POST['subject']
-        email = request.POST['email']
-        message = request.POST['message']
+#     if request.method == 'POST':
+#         name = request.POST['name']
+#         subject = request.POST['subject']
+#         email = request.POST['email']
+#         message = request.POST['message']
 
-        info = Contact.objects.create(
-            name=name,
-            subject=subject,
-            email=email,
-            message=message 
-        )
-        info.save()
-    return render(request, 'contact.html', inform) # mathiko dictionary pass gardina paro 
+#         info = Contact.objects.create(
+#             name=name,
+#             subject=subject,
+#             email=email,
+#             message=message 
+#         )
+#         info.save()
+#     return render(request, 'contact.html', inform) # mathiko dictionary pass gardina paro 
 
 
 # Till now we created function based views
@@ -270,13 +271,31 @@ def delete_cart(request,slug):
             return redirect('ecomapp:cart')
             messages.error(request,"Item is not in your database ")
     
-# class ContactView(BaseView):
-#     def get(self,request):
-#         if self.request.method == 'POST':
-#             self.name == self.request.POST['name']
-#             self.email == self.request.POST['email']
-#             self.subject == self.request.POST['subject']
-#             self.message == self.request.POST['message']
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        subject = request.POST['subject']
+        email = request.POST['email']
+        message = request.POST['message']
+            
+        contact = Contact.objects.create(
+                name = name,
+                email = email,
+                subject = subject,
+                message = message,
+            )
+        contact.save() 
+        send_email = EmailMessage(
+                'New message',
+                f'<b>{name}</b> is sending you messages that says <i>{message}</i>',
+                email,
+                ['risingstar3993@gmail.com'] 
+            )
+        send_email.send()
+        messages.success(request,"Thank You !! The message is sent")
+        return redirect('ecomapp:contact')
+    return render(request,'contact.html')
+         
 
 
 

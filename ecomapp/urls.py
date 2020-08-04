@@ -20,7 +20,7 @@ urlpatterns = [
     path('cart',cart,name="cart"),
     path('add_to_cart',add_to_cart,name="add_to_cart"),
     path('delete_cart/<slug>',delete_cart,name='delete_cart'),
-    path('contact',ContactView.as_view(),name='contact')
+    path('contact/',contact,name='contact')
 
 ] 
 

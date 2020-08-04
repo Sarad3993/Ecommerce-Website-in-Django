@@ -39,9 +39,10 @@
 			<div class="contact agileits">
 				<div class="contact-agileinfo">
 					<div class="contact-form wthree">
-						<form  method="POST">
+						<form action="/contact/" method="POST">
 
-						 	{% csrf_token  %} 
+							 {% csrf_token  %} 
+							 
 							<div class="">
 								<input type="text" name="name" placeholder="Name" required="">
 							</div>
