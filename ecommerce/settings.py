@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ecomapp'
+    'ecomapp',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -135,7 +136,8 @@ LOGOUT_REDIRECT_URL ='/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'risingstar3993@gmail.com'
+EMAIL_HOST_USER = 'uknownothingjonsnow23@gmail.com'
 EMAIL_HOST_PASSWORD = 'Pass#Word@Talai#Kina@Chiyo#1330'
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_USE_SSL = False 
+

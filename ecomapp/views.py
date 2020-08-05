@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages , auth
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMessage
+from rest_framework import viewsets 
+from .serializers import *  
 
 # # Function based view 
 # def contact(request):
@@ -270,7 +272,8 @@ def delete_cart(request,slug):
     else:
             return redirect('ecomapp:cart')
             messages.error(request,"Item is not in your database ")
-    
+
+# for contact
 def contact(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -287,16 +290,22 @@ def contact(request):
         contact.save() 
         send_email = EmailMessage(
                 'New message',
-                f'<b>{name}</b> is sending you messages that says <i>{message}</i>',
+                f'<html><body><b>{name}</b> is sending you messages that says <i>{message}</i> </body> </html>',
                 email,
-                ['risingstar3993@gmail.com'] 
+                ['uknownothingjonsnow23@gmail.com'] 
             )
         send_email.send()
         messages.success(request,"Thank You !! The message is sent")
         return redirect('ecomapp:contact')
     return render(request,'contact.html')
          
+# We must now create a view set of that serializer:
+# fro rest api:
 
+class ItemViewSet(viewsets.ModelViewSet):
+    queryset = Item.objects.all() # kasto kisimko value api ma dekhaune
+    serializer_class = ItemSerializers   
+# serializers create garyo, viewset create garyo and then url create garne 
 
 
 
