@@ -5,9 +5,12 @@ from .models import *
 from django.contrib.auth.models import User 
 from django.contrib import messages , auth
 from django.contrib.auth.decorators import login_required
+# for api
 from django.core.mail import EmailMessage
-from rest_framework import viewsets 
-from .serializers import *  
+from rest_framework import viewsets , generics 
+from .serializers import * 
+from django_filters.rest_framework import DjangoFilterBackend 
+from rest_framework.filters import OrderingFilter, SearchFilter 
 
 # # Function based view 
 # def contact(request):
@@ -288,24 +291,46 @@ def contact(request):
                 message = message,
             )
         contact.save() 
-        send_email = EmailMessage(
+        email = EmailMessage(
                 'New message',
-                f'<html><body><b>{name}</b> is sending you messages that says <i>{message}</i> </body> </html>',
+                f'<html><body><b>{name}</b> with email {email} has sent you message:  <i>{message}</i> </body> </html>',
                 email,
                 ['uknownothingjonsnow23@gmail.com'] 
-            )
-        send_email.send()
+            )            
+        email.content_subtype="html"
+        email.send()
         messages.success(request,"Thank You !! The message is sent")
         return redirect('ecomapp:contact')
     return render(request,'contact.html')
          
+
+# for rest api:
 # We must now create a view set of that serializer:
-# fro rest api:
 
 class ItemViewSet(viewsets.ModelViewSet):
-    queryset = Item.objects.all() # kasto kisimko value api ma dekhaune
-    serializer_class = ItemSerializers   
-# serializers create garyo, viewset create garyo and then url create garne 
+    queryset = Item.objects.all() # kasto kisimko value api ma dekhaune ..
+    serializer_class = ItemSerializers  # Pass that database queryset into the serializer we just created, so that it gets converted into JSON and rendered
+
+# note:
+# serializers create garyo, viewset create garyo and then register garne in urls section 
+
+class AdViewSet(viewsets.ModelViewSet):
+    queryset = Ad.objects.all() 
+    serializer_class = AdSerializers   
+
+# for filter (istall dajngo-filter first)
+# ecommerce ma filtering dherai hune items/products lai nai ho 
+class ItemFilterListView(generics.ListAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializers
+
+    filter_backends = (DjangoFilterBackend,OrderingFilter,SearchFilter)
+
+    filter_fields = ['id','title','price','discounted_price','stock','brand','labels','special_offer','category','subcategory'] #filter garanalai 
+
+    ordering_fields = ['id','title','price','labels'] # order anausar milauna lai 
+
+    search_fields = ['title','description'] # search garnalai 
 
 
 
