@@ -2,58 +2,20 @@ from django.shortcuts import render , redirect
 # for class based views we have to import View
 from django.views.generic.base import View
 from .models import *
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 from django.contrib import messages , auth
 from django.contrib.auth.decorators import login_required
 # for api
 from django.core.mail import EmailMessage
-from rest_framework import viewsets , generics 
-from .serializers import * 
-from django_filters.rest_framework import DjangoFilterBackend 
+from rest_framework import viewsets , generics
+from .serializers import *
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter, SearchFilter 
 
-# # Function based view 
-# def contact(request):
-#     inform = {}  # empty dictionary
-#     inform['information'] = Information.objects.all()
-
-#     if request.method == 'POST':
-#         name = request.POST['name']
-#         subject = request.POST['subject']
-#         email = request.POST['email']
-#         message = request.POST['message']
-
-#         info = Contact.objects.create(
-#             name=name,
-#             subject=subject,
-#             email=email,
-#             message=message 
-#         )
-#         info.save()
-#     return render(request, 'contact.html', inform) # mathiko dictionary pass gardina paro 
 
 
-# Till now we created function based views
-# now let's create class based views to render the templates
-# sano sano app ko lagi chi function based use hunxa(yesma inherit garna mildaina yesko main disadvantage) tara thulo thulo app jasma query haru dherai use hunxa tesma class based view better hunxa (cuz class based view ma OOP use garna painxa)
-# there are three types of generic views:  view, detail view(dictionary ko aadhar ma data aayera basxa), list view(list ko aadhar ma data aayera basxa)
-# teen ota generic view madhya euta lai chi inherit garnai parxa main class based view ma
-
-
-# Yo muniko class based view chi value matra declare garna ho
 class BaseView(View):  # inheriting generic view
-    template_views = {}  # creating empty dictionary
-# euta arko kura edi maile yo dictionary aru xuttai different class based view ma use garna chahe bhane majale use garna sakinxa simply by inheriting like as below ( aba tala nai her na dictionary ta BaseView class ko ho ni but use bhako xa HomeView maa)
-# yo dictionary each and every time multiple thau ma majale use garna sakixna
-
-# VVI note: edi yo BaseView class lai aru class haru le inherit garxan bhane ta pratyak class ma jj query haru define bhako xa; tyo queries haru chi sabai page le use garna paune bho
-
-
-# yo categories ra subcategories sabai page ma inherit garne ho bhane yei BaseView class ma rakhdine
-# BaseView class ma rakheko query haru bhaneko sab page ma inherit hunxa by default
-# Tara yo tala tira ko class haru ma chi j query lekhya xa tei respective page ko lagi matra apply hunxa 
- 
-    template_views['categories'] = Category.objects.all()
+    template_views = {'categories': Category.objects.all()}
     template_views['subcategories'] = Subcategory.objects.all()
 
 
@@ -160,8 +122,7 @@ class SearchView(BaseView):
         # name ="Search " bhanne xa ni input tag bhitra ho tei ho
         # __icontains is for search 
         query = request.GET.get('Search','None')
-        if not None:
-            self.template_views['search_result'] =Item.objects.filter(title__icontains=query)
+        self.template_views['search_result'] =Item.objects.filter(title__icontains=query)
         self.template_views['search_for'] = query
         return render(request,'search.html',self.template_views)
 
@@ -172,12 +133,12 @@ class SearchView(BaseView):
 def signup(request):
     if request.method == "POST":
         username = request.POST['username']
-        email = request.POST['email']
         password = request.POST['password']
         cpassword = request.POST['cpassword']
 
         if password == cpassword:
-            # aba maile tyo username/email exists garxa ki nai database tyo herna parne hunxa k; if exits garxa bhane further proceed garna nadine 
+            email = request.POST['email']
+            # aba maile tyo username/email exists garxa ki nai database tyo herna parne hunxa k; if exits garxa bhane further proceed garna nadine
             if User.objects.filter(username=username).exists():
                 messages.error(request,"The username is already taken")
                 return redirect('ecomapp:signup')
@@ -191,17 +152,14 @@ def signup(request):
                     username = username,
                     email = email,
                     password = password 
-                ) 
+                )
                 user.save()
                 user = auth.authenticate(username=username,password=password)
                 auth.login(request,user)
                 return redirect('/')
-                messages.success(request,"You are registered successfully!!! Go to login")
-                # sign up bhayesi directly home page ma redirect garne 
-                return redirect('ecomapp:signup')
         else:
             messages.error(request,"Passwords do not not match")
-                
+
             return redirect('ecomapp:signup')  
 
     return render(request,'signup.html') 
@@ -231,50 +189,43 @@ def logout(request):
 # for cart 
 # main UI ma visible garaune cart yo ho 
 def cart(request):
-    views = {}
-    views['carts'] = Cart.objects.filter(checkout=False,user=request.user) # checkout nabhako item haru matra cart ma display hunu paryo tesko lagi checkout lai True gardine ; ani request.user means tyo session maa bhako user lai matra garna dee bhaneko 
+    views = {'carts': Cart.objects.filter(checkout=False, user=request.user)}
     return render(request,'cart.html',views)
 
 
 # yo talako add to cart chi database ma value halna matra ho 
 @login_required
 def add_to_cart(request):
-    if request.method == 'POST':
-        title = request.POST['title']
-        slug = request.POST['slug']
-        image = request.POST['image']
-        price = request.POST['price']
-        description = request.POST['description']
-        # if there is already an item in cart ; just update that value 
-        if Cart.objects.filter(slug=slug).exists():
-            quantity= Cart.objects.get(slug=slug).quantity 
-            # filter le no of values return garxa but get le euta matra value return garxa 
-            Cart.objects.filter(slug=slug).update(quantity=quantity+1)
-            return redirect('ecomapp:cart') 
-        # else if cart is empty; create the new cart 
-        else:
-            my_cart = Cart.objects.create(
-                    user = request.user,
-                    slug = slug,
-                    title = title,
-                    image = image, 
-                    price = price,
-                    description = description,
-                    ) 
-            my_cart.save() 
-            return redirect('ecomapp:cart') 
-    else:
+    if request.method != 'POST':
         return redirect('/')
+    title = request.POST['title']
+    slug = request.POST['slug']
+    image = request.POST['image']
+    price = request.POST['price']
+    description = request.POST['description']
+        # if there is already an item in cart ; just update that value 
+    if Cart.objects.filter(slug=slug).exists():
+        quantity= Cart.objects.get(slug=slug).quantity
+        # filter le no of values return garxa but get le euta matra value return garxa 
+        Cart.objects.filter(slug=slug).update(quantity=quantity+1)
+    else:
+        my_cart = Cart.objects.create(
+                user = request.user,
+                slug = slug,
+                title = title,
+                image = image, 
+                price = price,
+                description = description,
+                )
+        my_cart.save()
+    return redirect('ecomapp:cart')
 
 # to delete items in cart 
 def delete_cart(request,slug):
     if Cart.objects.filter(slug=slug).exists():
-            Cart.objects.filter(slug=slug).delete()
-            messages.success(request,"Item is deleted.")
-            return redirect('ecomapp:cart')
-    else:
-            return redirect('ecomapp:cart')
-            messages.error(request,"Item is not in your database ")
+        Cart.objects.filter(slug=slug).delete()
+        messages.success(request,"Item is deleted.")
+    return redirect('ecomapp:cart')
 
 # for contact
 def contact(request):
